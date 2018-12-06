@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">sportsgen</string>
+    <string name="title_tournaments">Tournaments</string>
+    <string name="title_screening">Screenings</string>
+    <string name="title_academies">Academies</string>
+    <string name="title_News">News</string>
+
+    <string name="title_search">search</string>
+</resources>

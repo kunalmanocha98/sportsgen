@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f44336</color>
+    <color name="colorPrimaryDark">#ba000d</color>
+    <color name="primarylight">#ff7961</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="kunal">#6095ff</color>
+    <color name="kunal2">#ffa260</color>
+
+    <color name="colorwhite">#ffffff</color>
+    <color name="colorblack">#000000</color>
+</resources>
