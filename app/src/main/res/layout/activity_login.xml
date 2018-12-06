@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
-            android:fontFamily="cursive"
+            android:fontFamily="@font/helvetica_bold_italics"
             android:padding="8dp"
             android:text="Sports Gen"
             android:textColor="#ffffff"
@@ -28,11 +28,12 @@
             android:textStyle="bold" />
 
         <ImageView
+            android:padding="4dp"
             android:layout_width="150dp"
-            android:layout_height="120dp"
+            android:layout_height="150dp"
             android:layout_centerInParent="true"
             android:scaleType="fitXY"
-            app:srcCompat="@mipmap/ic_launcher" />
+            android:src="@drawable/microsoft"/>
 
     </RelativeLayout>
 
@@ -62,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:fontFamily="@font/helvetica_regular"
                 android:layout_height="40dp"
-                android:hint="EMAIL/MOBILE NO."
+                android:hint="Email/Mobile No."
                 android:textSize="14sp">
 
             </android.support.design.widget.TextInputEditText>
@@ -85,9 +86,9 @@
                 android:id="@+id/edt_password"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:hint="PASSWORD"
-                android:inputType="textPassword"
-                android:textSize="14sp">
+                android:hint="Password"
+                android:fontFamily="@font/helvetica_regular"
+                android:inputType="textPassword">
 
             </android.support.design.widget.TextInputEditText>
         </android.support.design.widget.TextInputLayout>
@@ -113,6 +114,7 @@
             android:textAllCaps="false"
             android:textColor="#ffffff"
             android:textSize="16sp"
+            android:fontFamily="@font/helvetica_bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_forgot_password" />
@@ -121,9 +123,10 @@
             android:id="@+id/txt_naviagte_to_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="20dp"
             android:padding="4dp"
-            android:textSize="12sp"
+            android:textSize="14sp"
+            android:fontFamily="@font/helvetica_regular"
             android:text="Don't Have an account? Create Account"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

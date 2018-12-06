@@ -82,13 +82,6 @@ public class CircularImageView extends AppCompatImageView {
     public CircularImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         TypedArray a= context.obtainStyledAttributes(attrs,R.styleable.CircularImageView,defStyle,0);
-//        TypedArray a = context.obtainStyledAttributes(attrs,
-//                new int[]{R.styleable.CircularImageView_civ_border_color,
-//                        R.styleable.CircularImageView_civ_border_overlay,
-//                        R.styleable.CircularImageView_civ_border_width,
-//                        R.styleable.CircularImageView_civ_circle_background_color,
-//                        R.styleable.CircularImageView_civ_fill_color
-//        },defStyle, 0);
 
         mBorderWidth = a.getDimensionPixelSize(R.styleable.CircularImageView_civ_border_width, DEFAULT_BORDER_WIDTH);
         mBorderColor = a.getColor(R.styleable.CircularImageView_civ_border_color, DEFAULT_BORDER_COLOR);
