@@ -1,4 +1,4 @@
-package com.sportsgen.User.Activities;
+package com.sportsgen.CommonClasses;
 
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -24,12 +24,9 @@ DrawerLayout drawerLayout;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white);
     }
-    public FrameLayout getContentframe(){
-        return content_frame;
-    }
-    public Toolbar getToolbar(){
-        return toolbar;
-    }
+    public DrawerLayout getDrawerLayout(){return drawerLayout;}
+    public FrameLayout getContentframe(){return content_frame;}
+    public Toolbar getToolbar(){return toolbar;}
 
 
 }

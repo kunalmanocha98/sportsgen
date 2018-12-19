@@ -10,4 +10,5 @@
 
     <color name="colorwhite">#ffffff</color>
     <color name="colorblack">#000000</color>
+    <color name="app_grey">#dad8d8</color>
 </resources>

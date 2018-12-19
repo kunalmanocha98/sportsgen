@@ -5,18 +5,20 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.sportsgen.CommonClasses.BaseActivity;
 import com.sportsgen.User.Fragments.AcademiesFragment;
 import com.sportsgen.User.Fragments.NewsFragment;
 import com.sportsgen.User.Fragments.ScreeningsFragment;
 import com.sportsgen.User.Fragments.TournamentFragment;
-import com.sportsgen.User.HelperClasses.Constants;
-import com.sportsgen.User.HelperClasses.Utils;
+import com.sportsgen.CommonClasses.HelperClasses.Constants;
+import com.sportsgen.CommonClasses.HelperClasses.Utils;
 import com.sportsgen.R;
 
 public class MainActivity extends BaseActivity {
@@ -49,7 +51,7 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                drawerLayout.openDrawer(GravityCompat.START);
+                getDrawerLayout().openDrawer(GravityCompat.START);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -62,22 +64,22 @@ public class MainActivity extends BaseActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.bottom_menu_tournaments: {
-                    TournamentFragment.newInstance();
+                    loadFragment(TournamentFragment.newInstance());
                     Utils.toast(MainActivity.this,Constants.StringConstants.TOURNAMENTS);
                     return true;
                 }
                 case R.id.bottom_menu_screenings: {
-                    ScreeningsFragment.newInstance();
+                    loadFragment(ScreeningsFragment.newInstance());
                     Utils.toast(MainActivity.this,Constants.StringConstants.SCREENINGS);
                     return true;
                 }
                 case R.id.bottom_menu_academies: {
-                    AcademiesFragment.newInstance();
+                    loadFragment(AcademiesFragment.newInstance());
                     Utils.toast(MainActivity.this,Constants.StringConstants.ACADEMIES);
                     return true;
                 }
                 case R.id.bottom_menu_news: {
-                    NewsFragment.newInstance();
+                    loadFragment(NewsFragment.newInstance());
                     Utils.toast(MainActivity.this,Constants.StringConstants.NEWS);
                     return true;
                 }
@@ -86,5 +88,10 @@ public class MainActivity extends BaseActivity {
         }
     };
 
-
+    private void loadFragment(Fragment fragment) {
+        android.support.v4.app.FragmentManager fragmentManager=getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_container, fragment);
+        fragmentTransaction.commit();
+    }
 }

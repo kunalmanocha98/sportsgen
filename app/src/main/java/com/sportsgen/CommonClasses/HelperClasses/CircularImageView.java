@@ -1,4 +1,4 @@
-package com.sportsgen.User.HelperClasses;
+package com.sportsgen.CommonClasses.HelperClasses;
 
 import android.content.Context;
 import android.content.res.TypedArray;

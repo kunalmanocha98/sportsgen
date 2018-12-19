@@ -4,6 +4,12 @@
     <string name="title_screening">Screenings</string>
     <string name="title_academies">Academies</string>
     <string name="title_News">News</string>
-
     <string name="title_search">search</string>
+
+
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_events">Events</string>
+    <string name="title_sales">Sales</string>
+    <string name="title_ratings">Ratings</string>
+
 </resources>

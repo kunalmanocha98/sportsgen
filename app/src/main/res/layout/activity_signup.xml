@@ -28,14 +28,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_signup_title">
 
-        <com.sportsgen.User.HelperClasses.CircularImageView
+        <com.sportsgen.CommonClasses.HelperClasses.CircularImageView
             android:id="@+id/profilePic"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:src="@drawable/temp_profile"
             android:layout_gravity="center_horizontal" />
 
-        <com.sportsgen.User.HelperClasses.CircularImageView
+        <com.sportsgen.CommonClasses.HelperClasses.CircularImageView
             android:id="@+id/iv_camera"
             android:layout_width="24dp"
             android:layout_height="24dp"

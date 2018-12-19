@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_menu_dashboard"
+        android:title="@string/title_dashboard"
+        android:icon="@drawable/icon_btmnav_tournament"/>
+    <item
+        android:id="@+id/bottom_menu_events"
+        android:title="@string/title_events"
+        android:icon="@drawable/icon_btmnav_screening"/>
+    <item
+        android:id="@+id/bottom_menu_sales"
+        android:title="@string/title_sales"
+        android:icon="@drawable/icon_btmnav_academies"/>
+    <item
+        android:id="@+id/bottom_menu_ratings"
+        android:title="@string/title_ratings"
+        android:icon="@drawable/icon_btmnav_news"/>
+
+</menu>

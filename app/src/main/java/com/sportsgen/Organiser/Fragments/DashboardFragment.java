@@ -1,4 +1,4 @@
-package com.sportsgen.User.Fragments;
+package com.sportsgen.Organiser.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,18 +10,16 @@ import android.view.ViewGroup;
 
 import com.sportsgen.R;
 
-public class TournamentFragment extends Fragment {
-
+public class DashboardFragment extends Fragment {
     public static Fragment newInstance(){
-        Fragment f=new TournamentFragment();
+        Fragment f=new DashboardFragment();
         return f;
     }
-
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v=LayoutInflater.from(container.getContext()).inflate(R.layout.fragment_tournaments,container,false);
+        View v=inflater.inflate(R.layout.fragment_organiser_dashboard,container,false);
         return v;
     }
 }
