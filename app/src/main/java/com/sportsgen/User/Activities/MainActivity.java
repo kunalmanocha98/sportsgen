@@ -1,4 +1,4 @@
-package com.sportsgen.Activities;
+package com.sportsgen.User.Activities;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -11,12 +11,12 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.sportsgen.Fragments.AcademiesFragment;
-import com.sportsgen.Fragments.NewsFragment;
-import com.sportsgen.Fragments.ScreeningsFragment;
-import com.sportsgen.Fragments.TournamentFragment;
-import com.sportsgen.HelperClasses.Constants;
-import com.sportsgen.HelperClasses.Utils;
+import com.sportsgen.User.Fragments.AcademiesFragment;
+import com.sportsgen.User.Fragments.NewsFragment;
+import com.sportsgen.User.Fragments.ScreeningsFragment;
+import com.sportsgen.User.Fragments.TournamentFragment;
+import com.sportsgen.User.HelperClasses.Constants;
+import com.sportsgen.User.HelperClasses.Utils;
 import com.sportsgen.R;
 
 public class MainActivity extends BaseActivity {

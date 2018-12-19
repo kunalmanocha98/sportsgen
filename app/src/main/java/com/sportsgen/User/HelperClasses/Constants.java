@@ -1,4 +1,4 @@
-package com.sportsgen.HelperClasses;
+package com.sportsgen.User.HelperClasses;
 
 public class Constants {
     public static class StringConstants{

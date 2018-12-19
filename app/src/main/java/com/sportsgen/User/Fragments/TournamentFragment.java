@@ -1,4 +1,4 @@
-package com.sportsgen.Fragments;
+package com.sportsgen.User.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,9 +10,10 @@ import android.view.ViewGroup;
 
 import com.sportsgen.R;
 
-public class AcademiesFragment extends Fragment {
+public class TournamentFragment extends Fragment {
+
     public static Fragment newInstance(){
-        Fragment f=new AcademiesFragment();
+        Fragment f=new TournamentFragment();
         return f;
     }
 
@@ -20,7 +21,7 @@ public class AcademiesFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v=LayoutInflater.from(container.getContext()).inflate(R.layout.fragment_academies,container,false);
+        View v=LayoutInflater.from(container.getContext()).inflate(R.layout.fragment_tournaments,container,false);
 
         return v;
     }

@@ -1,4 +1,4 @@
-package com.sportsgen.Fragments;
+package com.sportsgen.User.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

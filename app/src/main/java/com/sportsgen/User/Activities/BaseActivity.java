@@ -1,4 +1,4 @@
-package com.sportsgen.Activities;
+package com.sportsgen.User.Activities;
 
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
