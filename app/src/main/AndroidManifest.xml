@@ -26,6 +26,7 @@
             android:theme="@style/AppTheme.FullScreen">
 
         </activity>
+        <activity android:name=".Organiser.Activities.CreateEventActivity"></activity>
         <activity android:name=".User.Activities.SignupActivity"
             android:theme="@style/AppTheme.FullScreen"></activity>
     </application>

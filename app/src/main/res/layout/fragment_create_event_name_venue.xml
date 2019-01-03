@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RadioGroup
+    android:id="@+id/radio_group"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <RadioButton
+        android:layout_weight="1"
+        android:button="#00ffffff"
+        android:layout_margin="8dp"
+        android:background="@drawable/custom_radiobutton_background"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" />
+    <RadioButton
+        android:layout_weight="1"
+        android:layout_margin="8dp"
+        android:button="#00ffffff"
+        android:background="@drawable/custom_radiobutton_background"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" />
+</RadioGroup>
+    <TextView
+        android:id="@+id/txt_name_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radio_group"
+        android:text="Name"/>
+    <EditText
+        android:id="@+id/edt_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_name_heading"/>
+    <TextView
+        android:id="@+id/txt_venue_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edt_name"
+        android:text="Venue"/>
+    <EditText
+        android:id="@+id/edt_venue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_venue_heading"/>
+</RelativeLayout>
