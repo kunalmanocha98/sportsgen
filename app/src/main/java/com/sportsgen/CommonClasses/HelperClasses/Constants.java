@@ -12,6 +12,8 @@ public class Constants {
         public static String SALES="Sales";
         public static String RATINGS="Ratings";
 
+        public static String CREATE_EVENT_FRAGMENT="";
+
 
     }
 
