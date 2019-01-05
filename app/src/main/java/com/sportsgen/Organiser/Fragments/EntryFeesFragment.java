@@ -23,7 +23,7 @@ public class EntryFeesFragment extends Fragment implements View.OnClickListener 
     RecyclerView.LayoutManager layoutManager;
     Button btn_add_new;
     List<ModelEntryFees> list;
-
+    AdapterEntryFees adapter;
     public static Fragment newInstance(){
         Fragment f=new EntryFeesFragment();
         return f;
@@ -39,7 +39,10 @@ public class EntryFeesFragment extends Fragment implements View.OnClickListener 
         layoutManager=new LinearLayoutManager(getContext());
         rv_entry_fees.setLayoutManager(layoutManager);
         list=new ArrayList<>();
-        AdapterEntryFees adapter;//todo slfnslfnlas
+        adapter=new AdapterEntryFees(getActivity(),list);
+        rv_entry_fees.setAdapter(adapter);
+        rv_entry_fees.setNestedScrollingEnabled(true);
+        rv_entry_fees.setHasFixedSize(true);
         return v;
     }
 
@@ -54,6 +57,7 @@ public class EntryFeesFragment extends Fragment implements View.OnClickListener 
     }
 
     private void addnew_category() {
-
+        list.add(new ModelEntryFees());
+        adapter.notifyDataSetChanged();
     }
 }

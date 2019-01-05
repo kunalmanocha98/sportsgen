@@ -1,11 +1,11 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item
+   <!-- <item
         android:drawable="@drawable/radiobutton_b"
         android:state_checked="true"
-        android:state_pressed="true" />
-    <item
+        android:state_pressed="true" />-->
+  <!--  <item
         android:drawable="@drawable/radiobutton_a"
-        android:state_pressed="true" />
+        android:state_pressed="true" />-->
     <item
         android:drawable="@drawable/radiobutton_a"
         android:state_checked="true" />
