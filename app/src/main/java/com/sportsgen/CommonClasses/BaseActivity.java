@@ -22,6 +22,7 @@ DrawerLayout drawerLayout;
         drawerLayout=findViewById(R.id.drawer_layout);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setIcon(R.drawable.app_logo_main);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white);
     }
     public DrawerLayout getDrawerLayout(){return drawerLayout;}

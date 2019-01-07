@@ -10,16 +10,17 @@ import android.view.ViewGroup;
 
 import com.sportsgen.R;
 
-public class NameVenueFragment extends Fragment {
+public class VenueFragment extends Fragment {
+
     public static Fragment newInstance(){
-        Fragment f=new NameVenueFragment();
+        Fragment f=new VenueFragment();
         return f;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v= inflater.inflate(R.layout.fragment_create_event_name_venue,container,false);
+        View v=inflater.inflate(R.layout.fragment_create_event_venue,container,false);
         return v;
     }
 }

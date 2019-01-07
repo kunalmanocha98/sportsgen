@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#f44336</color>
-    <color name="colorPrimaryDark">#ba000d</color>
+    <color name="colorPrimary">#F46036</color>
+    <color name="colorPrimaryDark">#FC4A2A</color>
     <color name="primarylight">#ff7961</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#F46036</color>
 
     <color name="kunal">#6095ff</color>
     <color name="kunal2">#ffa260</color>
@@ -11,4 +11,13 @@
     <color name="colorwhite">#ffffff</color>
     <color name="colorblack">#000000</color>
     <color name="app_grey">#dad8d8</color>
+
+
+    <color name="primary">#F46036</color>
+    <color name="primarydark">#FC4A2A</color>
+    <color name="textprimary">#2E3532</color>
+    <color name="textsecondary">#2C4251</color>
+    <color name="accent">#FBBB9A</color>
+
+    <color name="white">#ffffff</color>
 </resources>

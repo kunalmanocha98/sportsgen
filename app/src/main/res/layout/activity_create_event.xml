@@ -1,28 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:ndroid="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.shuhart.stepview.StepView
+        android:id="@+id/step_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:sv_nextTextColor="@color/textprimary"
+        app:sv_nextStepLineColor="@color/textprimary"
+        app:sv_doneCircleColor="@color/primary"
+        app:sv_doneStepLineColor="@color/primary"
+        app:sv_doneCircleRadius="12dp"
+        app:sv_doneTextColor="@color/primary"
+        app:sv_doneStepMarkColor="@color/white"
+        app:sv_selectedCircleColor="@color/primary"
+        app:sv_selectedTextColor="@color/primary"
+        app:sv_selectedCircleRadius="12dp"
+        app:sv_selectedStepNumberColor="@color/white"
+        app:sv_stepViewStyle="@style/StepView"
+        app:sv_stepNumberTextSize="12sp"
+        app:sv_stepPadding="4dp"
+        app:sv_stepLineWidth="1dp"
+        app:sv_animationType="All" />
+    <FrameLayout
+        android:paddingTop="32dp"
+        android:layout_below="@id/step_view"
+        android:layout_above="@id/navigation_buttons_create_event"
+        android:id="@+id/frame_container_create_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </FrameLayout>
     <LinearLayout
+        android:elevation="8dp"
+        android:layout_alignParentBottom="true"
         android:id="@+id/navigation_buttons_create_event"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/btn_previous"
+            android:background="@drawable/custom_pre_button_background"
+            android:layout_margin="8dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/helvetica_bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Previous"/>
         <Button
+            android:background="@drawable/custom_next_button_background"
             android:id="@+id/btn_next"
+            android:textColor="@color/white"
+            android:layout_margin="8dp"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/helvetica_bold"
             android:text="Next"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
-    <FrameLayout
-        android:layout_below="@id/navigation_buttons_create_event"
-        android:id="@+id/frame_container_create_event"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </FrameLayout>
+
 </RelativeLayout>
