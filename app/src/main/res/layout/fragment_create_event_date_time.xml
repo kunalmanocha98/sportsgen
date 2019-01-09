@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,6 +19,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:textColor="@color/textprimary"
                 android:layout_margin="8dp"
                 android:text="Multiple Days"
                 app:switchPadding="16dp" />
@@ -28,9 +30,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/switch_toggle"
                 android:layout_margin="8dp"
+                android:textColor="@color/textprimary"
                 android:text="Date" />
 
             <LinearLayout
+                android:visibility="visible"
                 android:id="@+id/date_s_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,6 +42,7 @@
                 android:orientation="horizontal">
 
                 <RelativeLayout
+                    android:id="@+id/wraper_single_date"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
@@ -45,19 +50,30 @@
                     <TextView
                         android:id="@+id/txt_start_date_s"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/textprimary"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="31dp"/>
 
-                    <EditText
+                    <TextView
+                        android:background="@drawable/custom_date_picker_bg"
+                        android:id="@+id/edt_single_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/txt_start_date_s" />
+                        android:layout_below="@id/txt_start_date_s"
+                        android:hint="Enter date"
+                        android:textColorHint="@color/primary"
+                        android:textColor="@color/textprimary"
+                        android:fontFamily="@font/helvetica_bold"
+                        android:gravity="center"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:padding="10dp" />
                 </RelativeLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:visibility="gone"
+                android:visibility="invisible"
                 android:id="@+id/date_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -65,6 +81,7 @@
                 android:orientation="horizontal">
 
                 <RelativeLayout
+                    android:id="@+id/wraper_start_date"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
@@ -74,15 +91,25 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:text="From DAte" />
+                        android:text="From Date" />
 
-                    <EditText
+                    <TextView
+                        android:id="@+id/edt_start_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/txt_start_date" />
+                        android:layout_below="@id/txt_start_date"
+                        android:hint="Enter start date"
+                        android:textColorHint="@color/primary"
+                        android:fontFamily="@font/helvetica_bold"
+                        android:gravity="center"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/custom_date_picker_bg"
+                        android:padding="10dp"/>
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/wrapper_end_date"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
@@ -94,18 +121,28 @@
                         android:layout_centerHorizontal="true"
                         android:text="To Date" />
 
-                    <EditText
+                    <TextView
+                        android:id="@+id/edt_end_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/txt_end_date" />
+                        android:layout_below="@id/txt_end_date"
+                        android:hint="Enter end date"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:textColorHint="@color/primary"
+                        android:background="@drawable/custom_date_picker_bg"
+                        android:fontFamily="@font/helvetica_bold"
+                        android:gravity="center"
+                        android:padding="10dp" />
                 </RelativeLayout>
             </LinearLayout>
 
             <TextView
                 android:id="@+id/txt_time_heading"
                 android:layout_width="wrap_content"
+                android:textColor="@color/textprimary"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/date_s_layout"
+                android:layout_below="@id/date_layout"
                 android:layout_margin="8dp"
                 android:text="Time" />
 
@@ -126,12 +163,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:text="From Date" />
+                        android:text="Start Time" />
 
-                    <EditText
+                    <TextView
+                        android:id="@+id/edt_start_time"
                         android:layout_width="match_parent"
+                        android:background="@drawable/custom_date_picker_bg"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/txt_start_time" />
+                        android:layout_below="@id/txt_start_time"
+                        android:hint="Enter start time"
+                        android:textColor="@color/textprimary"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:textColorHint="@color/primary"
+                        android:fontFamily="@font/helvetica_bold"
+                        android:gravity="center"
+                        android:padding="10dp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -144,12 +191,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:text="To Date" />
+                        android:text="End Time" />
 
-                    <EditText
+                    <TextView
+                        android:id="@+id/edt_end_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/txt_end_time" />
+                        android:layout_below="@id/txt_end_time"
+                        android:hint="Enter end time"
+                        android:textColorHint="@color/primary"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:textColor="@color/textprimary"
+                        android:background="@drawable/custom_date_picker_bg"
+                        android:fontFamily="@font/helvetica_bold"
+                        android:gravity="center"
+                        android:padding="10dp" />
                 </RelativeLayout>
             </LinearLayout>
 
