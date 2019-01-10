@@ -9,7 +9,40 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-           
+           <TextView
+               android:id="@+id/category_title_number"
+               android:padding="8dp"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Category"
+               android:textColor="@color/white"
+               android:layout_centerHorizontal="true"
+               android:gravity="center"
+               android:background="@color/primary"/>
+            <TextView
+                android:id="@+id/txt_category_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica_bold"
+                android:textSize="14sp"
+                android:layout_below="@id/category_title_number"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="Under 17"
+                android:textColor="@color/textprimary"/>
+
+            <TextView
+                android:id="@+id/txt_category_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica_regular"
+                android:textSize="12sp"
+                android:layout_below="@id/txt_category_name"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="rs 600"
+                android:textColor="@color/textprimary"/>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 

@@ -7,22 +7,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.shuhart.stepview.StepView;
 import com.sportsgen.CommonClasses.HelperClasses.Constants;
+import com.sportsgen.CommonClasses.HelperClasses.Utils;
 import com.sportsgen.Organiser.Fragments.DateandTimeFragment;
 import com.sportsgen.Organiser.Fragments.EntryFeesFragment;
 import com.sportsgen.Organiser.Fragments.ImageBanerFragment;
 import com.sportsgen.Organiser.Fragments.NamesportDesFragment;
 import com.sportsgen.Organiser.Fragments.VenueFragment;
+import com.sportsgen.Organiser.Models.CreateEventData;
 import com.sportsgen.R;
 
 import java.util.ArrayList;
 
-public class CreateEventActivity extends AppCompatActivity implements View.OnClickListener {
+public class CreateEventActivity extends AppCompatActivity implements View.OnClickListener, CreateEventData.OnDataEntryListener {
     FrameLayout frameLayout;
     Button btn_next, btn_pre;
     StepView stepView;
+    CreateEventData modelalldata;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,7 +38,8 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
         stepView = findViewById(R.id.step_view);
         btn_next.setOnClickListener(this);
         btn_pre.setOnClickListener(this);
-        loadFragment(NamesportDesFragment.newInstance());
+        modelalldata = new CreateEventData();
+        loadFragment(NamesportDesFragment.newInstance(this, modelalldata));
         setupstepview();
 
     }
@@ -44,9 +49,9 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
                 .steps(new ArrayList<String>() {{
                     add("Name");
                     add("Venue");
-                    add("Date and Time");
+                    add("Date Time");
                     add("Categories");
-                    add("Image Banner");
+                    add("Image");
                 }})
                 .commit();
     }
@@ -74,7 +79,11 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
         switch (v.getId()) {
             case R.id.btn_next: {
                 if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(NamesportDesFragment.class.getName())) {
-                    loadFragment(VenueFragment.newInstance());
+                    if (Constants.StringConstants.is_NameData_Submited) {
+                        loadFragment(VenueFragment.newInstance());
+                    }else {
+                        Utils.toast(CreateEventActivity.this,"Please Submit the data first");
+                    }
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(VenueFragment.class.getName())) {
                     loadFragment(DateandTimeFragment.newInstance());
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(DateandTimeFragment.class.getName())) {
@@ -86,7 +95,7 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
             }
             case R.id.btn_previous: {
                 if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(VenueFragment.class.getName())) {
-                    loadFragment(NamesportDesFragment.newInstance());
+                    loadFragment(NamesportDesFragment.newInstance(this, modelalldata));
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(DateandTimeFragment.class.getName())) {
                     loadFragment(VenueFragment.newInstance());
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(EntryFeesFragment.class.getName())) {
@@ -97,5 +106,25 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
                 break;
             }
         }
+    }
+
+    @Override
+    public void setEventType(String Eventtype) {
+        modelalldata.setEventtype(Eventtype);
+    }
+
+    @Override
+    public void setEventName(String EventName) {
+        modelalldata.setEventname(EventName);
+    }
+
+    @Override
+    public void setEventSport(String EventSport) {
+        modelalldata.setEventSport(EventSport);
+    }
+
+    @Override
+    public void setEventDescription(String EventDescription) {
+        modelalldata.setEventDescription(EventDescription);
     }
 }

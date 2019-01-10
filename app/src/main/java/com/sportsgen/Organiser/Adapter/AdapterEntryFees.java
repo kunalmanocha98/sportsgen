@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.sportsgen.Organiser.Fragments.EntryFeesFragment;
 import com.sportsgen.Organiser.Models.ModelEntryFees;
@@ -30,7 +31,9 @@ public class AdapterEntryFees extends RecyclerView.Adapter<AdapterEntryFees.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-
+        viewHolder.txt_title.setText("Category "+(i+1));
+        viewHolder.txt_category_name.setText(list.get(i).getCategory());
+        viewHolder.txt_category_price.setText(list.get(i).getFees_entry());
     }
 
     @Override
@@ -39,8 +42,12 @@ public class AdapterEntryFees extends RecyclerView.Adapter<AdapterEntryFees.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView txt_title,txt_category_name,txt_category_price;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            txt_title=itemView.findViewById(R.id.category_title_number);
+            txt_category_name=itemView.findViewById(R.id.txt_category_name);
+            txt_category_price=itemView.findViewById(R.id.txt_category_price);
         }
     }
 }

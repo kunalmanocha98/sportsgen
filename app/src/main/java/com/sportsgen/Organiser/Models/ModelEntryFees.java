@@ -1,25 +1,18 @@
 package com.sportsgen.Organiser.Models;
 
 public class ModelEntryFees {
-    String from_age;
-    String to_age;
     String fees_entry;
+    String category;
 
-    public String getFrom_age() {
-        return from_age;
+    public String getCategory() {
+        return category;
     }
 
-    public void setFrom_age(String from_age) {
-        this.from_age = from_age;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public String getTo_age() {
-        return to_age;
-    }
 
-    public void setTo_age(String to_age) {
-        this.to_age = to_age;
-    }
 
     public String getFees_entry() {
         return fees_entry;
