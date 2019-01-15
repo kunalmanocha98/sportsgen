@@ -2,14 +2,12 @@ package com.sportsgen.Organiser.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.shuhart.stepview.StepView;
 import com.sportsgen.CommonClasses.HelperClasses.Constants;
@@ -22,7 +20,6 @@ import com.sportsgen.Organiser.Fragments.VenueFragment;
 import com.sportsgen.Organiser.Models.CreateEventData;
 import com.sportsgen.R;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class CreateEventActivity extends AppCompatActivity implements View.OnClickListener, CreateEventData.OnDataEntryListener {
@@ -42,7 +39,7 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
         btn_next.setOnClickListener(this);
         btn_pre.setOnClickListener(this);
         modelalldata = new CreateEventData();
-        loadFragment(NamesportDesFragment.newInstance( modelalldata));
+        loadFragment(NamesportDesFragment.newInstance(modelalldata));
         setupstepview();
 
     }
@@ -88,13 +85,18 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
             case R.id.btn_next: {
                 if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(NamesportDesFragment.class.getName())) {
                     if (Constants.StringConstants.is_NameData_Submited) {
-                        stepView.go(1,true);
-                        loadFragment(VenueFragment.newInstance());
-                    }else {
-                        Utils.toast(CreateEventActivity.this,"Please Submit the data first");
+                        stepView.go(1, true);
+                        loadFragment(VenueFragment.newInstance(modelalldata));
+                    } else {
+                        Utils.toast(CreateEventActivity.this, "Please Submit the data first");
                     }
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(VenueFragment.class.getName())) {
-                    loadFragment(DateandTimeFragment.newInstance());
+                    if (Constants.StringConstants.is_VenueData_submitted) {
+                        stepView.go(1, true);
+                        loadFragment(DateandTimeFragment.newInstance());
+                    } else {
+                        Utils.toast(CreateEventActivity.this, "Please Submit the data first");
+                    }
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(DateandTimeFragment.class.getName())) {
                     loadFragment(EntryFeesFragment.newInstance());
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(EntryFeesFragment.class.getName())) {
@@ -104,9 +106,9 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
             }
             case R.id.btn_previous: {
                 if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(VenueFragment.class.getName())) {
-                    loadFragment(NamesportDesFragment.newInstance( modelalldata));
+                    loadFragment(NamesportDesFragment.newInstance(modelalldata));
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(DateandTimeFragment.class.getName())) {
-                    loadFragment(VenueFragment.newInstance());
+                    loadFragment(VenueFragment.newInstance(modelalldata));
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(EntryFeesFragment.class.getName())) {
                     loadFragment(DateandTimeFragment.newInstance());
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(ImageBanerFragment.class.getName())) {
@@ -143,22 +145,24 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
     }
 
     @Override
-    public void SetVenueplace(String VenuePlace) {
-modelalldata.setVenueplace(VenuePlace);
+    public void setVenueplace(String VenuePlace) {
+        modelalldata.setVenueplace(VenuePlace);
     }
 
     @Override
-    public void SetVenueaddress(String Venueaddress) {
-modelalldata.setVenueaddress(Venueaddress);
+    public void setVenueaddress(String Venueaddress) {
+        modelalldata.setVenueaddress(Venueaddress);
     }
 
     @Override
-    public void SetVenueLat(String VenueLat) {
-modelalldata.setVenue_lat(VenueLat);
+    public void setVenueLat(String VenueLat) {
+
     }
 
     @Override
-    public void SetVenueLng(String VenueLng) {
-modelalldata.setVenue_lng(VenueLng);
+    public void setVenueLng(String VenueLng) {
+
     }
+
+
 }

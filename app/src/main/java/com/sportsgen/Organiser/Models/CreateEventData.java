@@ -249,10 +249,10 @@ public class CreateEventData implements Parcelable {
         void setEventDescription(String EventDescription);
 
         void setVenuename(String Venuename);
-        void SetVenueplace(String VenuePlace);
-        void SetVenueaddress(String Venueaddress);
-        void SetVenueLat(String VenueLat);
-        void SetVenueLng(String VenueLng);
+        void setVenueplace(String VenuePlace);
+        void setVenueaddress(String Venueaddress);
+        void setVenueLat(String VenueLat);
+        void setVenueLng(String VenueLng);
 
 
     }
