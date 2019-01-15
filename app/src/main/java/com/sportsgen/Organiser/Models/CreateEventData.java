@@ -1,29 +1,75 @@
 package com.sportsgen.Organiser.Models;
 
 import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.sportsgen.Organiser.Fragments.EntryFeesFragment;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class CreateEventData implements Serializable {
+public class CreateEventData implements Parcelable {
     String Eventtype;
     String Eventname;
     String EventSport;
     String EventDescription;
-    String Venue;
+
+    String Venuename;
+    String Venueplace;
+    String Venueaddress;
     String Venue_lat;
     String Venue_lng;
+
     Boolean is_multiple_days;
     String single_date;
     String from_date;
     String to_date;
     String from_time;
     String to_time;
+
     Boolean is_paid;
     List<ModelEntryFees> list_entry_fees;
     Bitmap img_banner;
+
+
+
+
+
+
+    public CreateEventData(Parcel in) {
+        Eventtype = in.readString();
+        Eventname = in.readString();
+        EventSport = in.readString();
+        EventDescription = in.readString();
+        Venuename = in.readString();
+        Venueplace=in.readString();
+        Venueaddress=in.readString();
+        Venue_lat = in.readString();
+        Venue_lng = in.readString();
+        byte tmpIs_multiple_days = in.readByte();
+        is_multiple_days = tmpIs_multiple_days == 0 ? null : tmpIs_multiple_days == 1;
+        single_date = in.readString();
+        from_date = in.readString();
+        to_date = in.readString();
+        from_time = in.readString();
+        to_time = in.readString();
+        byte tmpIs_paid = in.readByte();
+        is_paid = tmpIs_paid == 0 ? null : tmpIs_paid == 1;
+        img_banner = in.readParcelable(Bitmap.class.getClassLoader());
+    }
+
+    public static final Creator<CreateEventData> CREATOR = new Creator<CreateEventData>() {
+        @Override
+        public CreateEventData createFromParcel(Parcel in) {
+            return new CreateEventData(in);
+        }
+
+        @Override
+        public CreateEventData[] newArray(int size) {
+            return new CreateEventData[size];
+        }
+    };
 
     public String getEventtype() {
         return Eventtype;
@@ -57,16 +103,31 @@ public class CreateEventData implements Serializable {
         EventDescription = eventDescription;
     }
 
-    public String getVenue() {
-        return Venue;
+    public String getVenuename() {
+        return Venuename;
     }
 
-    public void setVenue(String venue) {
-        Venue = venue;
+    public void setVenuename(String venuename) {
+        Venuename = venuename;
     }
 
     public String getVenue_lat() {
         return Venue_lat;
+    }
+    public String getVenueplace() {
+        return Venueplace;
+    }
+
+    public void setVenueplace(String venueplace) {
+        Venueplace = venueplace;
+    }
+
+    public String getVenueaddress() {
+        return Venueaddress;
+    }
+
+    public void setVenueaddress(String venueaddress) {
+        Venueaddress = venueaddress;
     }
 
     public void setVenue_lat(String venue_lat) {
@@ -153,10 +214,46 @@ public class CreateEventData implements Serializable {
         this.img_banner = img_banner;
     }
 
-    public interface OnDataEntryListener extends Serializable {
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+    public CreateEventData(){}
+
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(Eventtype);
+        dest.writeString(Eventname);
+        dest.writeString(EventSport);
+        dest.writeString(EventDescription);
+        dest.writeString(Venuename);
+        dest.writeString(Venueplace);
+        dest.writeString(Venueaddress);
+        dest.writeString(Venue_lat);
+        dest.writeString(Venue_lng);
+        dest.writeByte((byte) (is_multiple_days == null ? 0 : is_multiple_days ? 1 : 2));
+        dest.writeString(single_date);
+        dest.writeString(from_date);
+        dest.writeString(to_date);
+        dest.writeString(from_time);
+        dest.writeString(to_time);
+        dest.writeByte((byte) (is_paid == null ? 0 : is_paid ? 1 : 2));
+        dest.writeParcelable(img_banner, flags);
+    }
+
+    public interface OnDataEntryListener {
         void setEventType(String Eventtype);
         void setEventName(String EventName);
         void setEventSport(String EventSport);
         void setEventDescription(String EventDescription);
+
+        void setVenuename(String Venuename);
+        void SetVenueplace(String VenuePlace);
+        void SetVenueaddress(String Venueaddress);
+        void SetVenueLat(String VenueLat);
+        void SetVenueLng(String VenueLng);
+
+
     }
 }

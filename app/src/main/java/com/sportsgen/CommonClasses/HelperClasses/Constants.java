@@ -14,6 +14,8 @@ public class Constants {
 
         public static String CREATE_EVENT_FRAGMENT="";
 
+        public static String HTML_TEXT="html_text";
+
 
         public static Boolean is_NameData_Submited=false;
         public static Boolean is_VenueData_submitted=false;
@@ -21,8 +23,9 @@ public class Constants {
         public static Boolean is_CategoriesData_submitted=false;
         public static Boolean is_ImageBannerData_Submited=false;
 
-
-
+    }
+    public static class IntegerConstants{
+        public static int DESCRIPTION_RESULT=55;
     }
 
 }

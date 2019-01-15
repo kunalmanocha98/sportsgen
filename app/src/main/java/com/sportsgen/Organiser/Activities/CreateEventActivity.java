@@ -1,6 +1,8 @@
 package com.sportsgen.Organiser.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +22,7 @@ import com.sportsgen.Organiser.Fragments.VenueFragment;
 import com.sportsgen.Organiser.Models.CreateEventData;
 import com.sportsgen.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class CreateEventActivity extends AppCompatActivity implements View.OnClickListener, CreateEventData.OnDataEntryListener {
@@ -39,7 +42,7 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
         btn_next.setOnClickListener(this);
         btn_pre.setOnClickListener(this);
         modelalldata = new CreateEventData();
-        loadFragment(NamesportDesFragment.newInstance(this, modelalldata));
+        loadFragment(NamesportDesFragment.newInstance( modelalldata));
         setupstepview();
 
     }
@@ -75,11 +78,17 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_next: {
                 if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(NamesportDesFragment.class.getName())) {
                     if (Constants.StringConstants.is_NameData_Submited) {
+                        stepView.go(1,true);
                         loadFragment(VenueFragment.newInstance());
                     }else {
                         Utils.toast(CreateEventActivity.this,"Please Submit the data first");
@@ -95,7 +104,7 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
             }
             case R.id.btn_previous: {
                 if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(VenueFragment.class.getName())) {
-                    loadFragment(NamesportDesFragment.newInstance(this, modelalldata));
+                    loadFragment(NamesportDesFragment.newInstance( modelalldata));
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(DateandTimeFragment.class.getName())) {
                     loadFragment(VenueFragment.newInstance());
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(EntryFeesFragment.class.getName())) {
@@ -126,5 +135,30 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void setEventDescription(String EventDescription) {
         modelalldata.setEventDescription(EventDescription);
+    }
+
+    @Override
+    public void setVenuename(String Venuename) {
+        modelalldata.setVenuename(Venuename);
+    }
+
+    @Override
+    public void SetVenueplace(String VenuePlace) {
+modelalldata.setVenueplace(VenuePlace);
+    }
+
+    @Override
+    public void SetVenueaddress(String Venueaddress) {
+modelalldata.setVenueaddress(Venueaddress);
+    }
+
+    @Override
+    public void SetVenueLat(String VenueLat) {
+modelalldata.setVenue_lat(VenueLat);
+    }
+
+    @Override
+    public void SetVenueLng(String VenueLng) {
+modelalldata.setVenue_lng(VenueLng);
     }
 }

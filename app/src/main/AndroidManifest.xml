@@ -11,9 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".User.Activities.MainActivity"
-            android:label="@string/app_name">
-
-        </activity>
+            android:label="@string/app_name"></activity>
         <activity android:name=".Organiser.Activities.OrganiserMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +20,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".CommonClasses.BaseActivity" />
-        <activity android:name=".User.Activities.LoginActivity"
-            android:theme="@style/AppTheme.FullScreen">
-
-        </activity>
-        <activity android:name=".Organiser.Activities.CreateEventActivity"></activity>
-        <activity android:name=".User.Activities.SignupActivity"
+        <activity
+            android:name=".User.Activities.LoginActivity"
             android:theme="@style/AppTheme.FullScreen"></activity>
+        <activity android:name=".Organiser.Activities.CreateEventActivity" />
+        <activity
+            android:name=".User.Activities.SignupActivity"
+            android:theme="@style/AppTheme.FullScreen" />
+        <activity android:name=".CommonClasses.TextEditorActivity"></activity>
     </application>
 
 </manifest>
