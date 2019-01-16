@@ -18,9 +18,11 @@ import com.sportsgen.Organiser.Fragments.ImageBanerFragment;
 import com.sportsgen.Organiser.Fragments.NamesportDesFragment;
 import com.sportsgen.Organiser.Fragments.VenueFragment;
 import com.sportsgen.Organiser.Models.CreateEventData;
+import com.sportsgen.Organiser.Models.ModelEntryFees;
 import com.sportsgen.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CreateEventActivity extends AppCompatActivity implements View.OnClickListener, CreateEventData.OnDataEntryListener {
     FrameLayout frameLayout;
@@ -92,15 +94,25 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
                     }
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(VenueFragment.class.getName())) {
                     if (Constants.StringConstants.is_VenueData_submitted) {
-                        stepView.go(1, true);
-                        loadFragment(DateandTimeFragment.newInstance());
+                        stepView.go(2, true);
+                        loadFragment(DateandTimeFragment.newInstance(modelalldata));
                     } else {
                         Utils.toast(CreateEventActivity.this, "Please Submit the data first");
                     }
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(DateandTimeFragment.class.getName())) {
-                    loadFragment(EntryFeesFragment.newInstance());
+                    if (Constants.StringConstants.is_VenueData_submitted) {
+                        stepView.go(3, true);
+                        loadFragment(EntryFeesFragment.newInstance(modelalldata));
+                    } else {
+                        Utils.toast(CreateEventActivity.this, "Please Submit the data first");
+                    }
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(EntryFeesFragment.class.getName())) {
-                    loadFragment(ImageBanerFragment.newInstance());
+                    if (Constants.StringConstants.is_VenueData_submitted) {
+                        stepView.go(3, true);
+                        loadFragment(ImageBanerFragment.newInstance());
+                    } else {
+                        Utils.toast(CreateEventActivity.this, "Please Submit the data first");
+                    }
                 }
                 break;
             }
@@ -110,9 +122,9 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(DateandTimeFragment.class.getName())) {
                     loadFragment(VenueFragment.newInstance(modelalldata));
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(EntryFeesFragment.class.getName())) {
-                    loadFragment(DateandTimeFragment.newInstance());
+                    loadFragment(DateandTimeFragment.newInstance(modelalldata));
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(ImageBanerFragment.class.getName())) {
-                    loadFragment(EntryFeesFragment.newInstance());
+                    loadFragment(EntryFeesFragment.newInstance(modelalldata));
                 }
                 break;
             }
@@ -156,12 +168,52 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void setVenueLat(String VenueLat) {
-
+        modelalldata.setVenue_lat(VenueLat);
     }
 
     @Override
     public void setVenueLng(String VenueLng) {
+        modelalldata.setVenue_lng(VenueLng);
+    }
 
+    @Override
+    public void set_is_multiple_days(Boolean is_multiple_days) {
+        modelalldata.setIs_multiple_days(is_multiple_days);
+    }
+
+    @Override
+    public void set_single_date(String single_date) {
+        modelalldata.setSingle_date(single_date);
+    }
+
+    @Override
+    public void setFrom_date(String from_date) {
+        modelalldata.setFrom_date(from_date);
+    }
+
+    @Override
+    public void set_to_date(String to_date) {
+        modelalldata.setTo_date(to_date);
+    }
+
+    @Override
+    public void set_from_time(String from_time) {
+        modelalldata.setFrom_date(from_time);
+    }
+
+    @Override
+    public void set_to_time(String to_time) {
+        modelalldata.setTo_time(to_time);
+    }
+
+    @Override
+    public void set_is_paid(Boolean is_paid) {
+        modelalldata.setIs_paid(is_paid);
+    }
+
+    @Override
+    public void set_list_of_categories(List<ModelEntryFees> mlist) {
+        modelalldata.setList_entry_fees(mlist);
     }
 
 

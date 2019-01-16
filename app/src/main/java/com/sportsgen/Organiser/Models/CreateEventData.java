@@ -30,6 +30,9 @@ public class CreateEventData implements Parcelable {
 
     Boolean is_paid;
     List<ModelEntryFees> list_entry_fees;
+
+
+
     Bitmap img_banner;
 
 
@@ -253,6 +256,17 @@ public class CreateEventData implements Parcelable {
         void setVenueaddress(String Venueaddress);
         void setVenueLat(String VenueLat);
         void setVenueLng(String VenueLng);
+
+        void set_is_multiple_days(Boolean is_multiple_days);
+        void set_single_date(String single_date);
+        void setFrom_date(String from_date);
+        void set_to_date(String to_date);
+        void set_from_time(String from_time);
+        void set_to_time(String to_time);
+
+        void set_is_paid(Boolean is_paid);
+        void set_list_of_categories(List<ModelEntryFees> mlist);
+
 
 
     }
