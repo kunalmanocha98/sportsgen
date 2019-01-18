@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.sportsgen.CommonClasses.HelperClasses.Utils;
+import com.sportsgen.Organiser.Models.CreateEventData;
 import com.sportsgen.R;
 
 import java.io.FileNotFoundException;
@@ -28,7 +29,7 @@ public class ImageBanerFragment extends Fragment implements View.OnClickListener
     private int RESULT_LOAD_IMG = 301;
 
 
-    public static Fragment newInstance(){
+    public static Fragment newInstance(CreateEventData modelalldata){
         Fragment f=new ImageBanerFragment();
         return f;
     }

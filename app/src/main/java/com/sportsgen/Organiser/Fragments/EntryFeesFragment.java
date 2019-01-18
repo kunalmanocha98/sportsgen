@@ -116,16 +116,6 @@ public class EntryFeesFragment extends Fragment implements View.OnClickListener,
         }
     }
 
-    private void checkdata() {
-        if (btn_free.isChecked()){
-            onDataEntryListener.set_is_paid(false);
-        }else if (btn_paid.isChecked()){
-            onDataEntryListener.set_is_paid(true);
-        }else {
-            Utils.toast(getActivity(),"Please select an option");
-        }
-        modelalldata.setList_entry_fees(list);
-    }
 
     private void remove_last_item() {
         list.remove(list.size()-1);
@@ -158,22 +148,30 @@ public class EntryFeesFragment extends Fragment implements View.OnClickListener,
                     edt_category_name.setError("This field is required");
                 }else {
                     if (edt_category_price.equals("")){
-
+                        if(btn_free.isChecked()){
+                            modelEntryFees.setCategory(name);
+                            modelEntryFees.setFees_entry(price);
+                            list.add(modelEntryFees);
+                            adapter.notifyDataSetChanged();
+                            dialog.dismiss();
+                        }else{
+                            edt_category_price.setError("This field is required");
+                        }
                     }
                 }
 
 
-                if(name.equals("")){
-
-                }else if (price.equals("")){
-                    edt_category_price.setError("This field is required");
-                }else if (!name.equals("") || !price.equals("")){
-                    modelEntryFees.setCategory(name);
-                    modelEntryFees.setFees_entry(price);
-                    list.add(modelEntryFees);
-                    adapter.notifyDataSetChanged();
-                    dialog.dismiss();
-                }
+//                if(name.equals("")){
+//
+//                }else if (price.equals("")){
+//                    edt_category_price.setError("This field is required");
+//                }else if (!name.equals("") || !price.equals("")){
+//                    modelEntryFees.setCategory(name);
+//                    modelEntryFees.setFees_entry(price);
+//                    list.add(modelEntryFees);
+//                    adapter.notifyDataSetChanged();
+//                    dialog.dismiss();
+//                }
 
             }
         });
@@ -201,4 +199,16 @@ public class EntryFeesFragment extends Fragment implements View.OnClickListener,
             }
         }
     }
+
+    private void checkdata() {
+        if (btn_free.isChecked()){
+            onDataEntryListener.set_is_paid(false);
+        }else if (btn_paid.isChecked()){
+            onDataEntryListener.set_is_paid(true);
+        }else {
+            Utils.toast(getActivity(),"Please select an option");
+        }
+        onDataEntryListener.set_list_of_categories(list);
+    }
+
 }

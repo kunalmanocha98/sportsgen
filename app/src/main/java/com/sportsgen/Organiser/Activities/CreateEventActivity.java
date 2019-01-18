@@ -14,6 +14,7 @@ import com.sportsgen.CommonClasses.HelperClasses.Constants;
 import com.sportsgen.CommonClasses.HelperClasses.Utils;
 import com.sportsgen.Organiser.Fragments.DateandTimeFragment;
 import com.sportsgen.Organiser.Fragments.EntryFeesFragment;
+import com.sportsgen.Organiser.Fragments.ExtraDetailsFragment;
 import com.sportsgen.Organiser.Fragments.ImageBanerFragment;
 import com.sportsgen.Organiser.Fragments.NamesportDesFragment;
 import com.sportsgen.Organiser.Fragments.VenueFragment;
@@ -53,6 +54,7 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
                     add("Venue");
                     add("Date Time");
                     add("Categories");
+                    add("Extras");
                     add("Image");
                 }})
                 .commit();
@@ -100,16 +102,23 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
                         Utils.toast(CreateEventActivity.this, "Please Submit the data first");
                     }
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(DateandTimeFragment.class.getName())) {
-                    if (Constants.StringConstants.is_VenueData_submitted) {
+                    if (Constants.StringConstants.is_DateTimeData_Submited) {
                         stepView.go(3, true);
                         loadFragment(EntryFeesFragment.newInstance(modelalldata));
                     } else {
                         Utils.toast(CreateEventActivity.this, "Please Submit the data first");
                     }
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(EntryFeesFragment.class.getName())) {
-                    if (Constants.StringConstants.is_VenueData_submitted) {
-                        stepView.go(3, true);
-                        loadFragment(ImageBanerFragment.newInstance());
+                    if (Constants.StringConstants.is_CategoriesData_submitted) {
+                        stepView.go(4, true);
+                        loadFragment(ExtraDetailsFragment.newInstance(modelalldata));
+                    } else {
+                        Utils.toast(CreateEventActivity.this, "Please Submit the data first");
+                    }
+                } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(ExtraDetailsFragment.class.getName())) {
+                    if (Constants.StringConstants.is_Extra_Details_Data_submitted) {
+                        stepView.go(5, true);
+                        loadFragment(ImageBanerFragment.newInstance(modelalldata));
                     } else {
                         Utils.toast(CreateEventActivity.this, "Please Submit the data first");
                     }
@@ -123,8 +132,10 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
                     loadFragment(VenueFragment.newInstance(modelalldata));
                 } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(EntryFeesFragment.class.getName())) {
                     loadFragment(DateandTimeFragment.newInstance(modelalldata));
-                } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(ImageBanerFragment.class.getName())) {
+                } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(ExtraDetailsFragment.class.getName())) {
                     loadFragment(EntryFeesFragment.newInstance(modelalldata));
+                } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(ImageBanerFragment.class.getName())) {
+                    loadFragment(ExtraDetailsFragment.newInstance(modelalldata));
                 }
                 break;
             }
