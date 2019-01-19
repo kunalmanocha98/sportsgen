@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.sportsgen.CommonClasses.HelperClasses.Constants;
 import com.sportsgen.CommonClasses.HelperClasses.Utils;
 import com.sportsgen.Organiser.Adapter.AdapterEntryFees;
 import com.sportsgen.Organiser.Models.CreateEventData;
@@ -209,6 +210,8 @@ public class EntryFeesFragment extends Fragment implements View.OnClickListener,
             Utils.toast(getActivity(),"Please select an option");
         }
         onDataEntryListener.set_list_of_categories(list);
+        Constants.StringConstants.is_CategoriesData_submitted=true;
+        Utils.toast(getActivity(), "Submitted Successfully");
     }
 
 }

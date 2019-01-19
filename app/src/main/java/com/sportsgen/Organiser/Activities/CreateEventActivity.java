@@ -227,5 +227,35 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
         modelalldata.setList_entry_fees(mlist);
     }
 
+    @Override
+    public void set_is_ltd_reg(Boolean is_ltd_reg) {
+        modelalldata.setIs_limited_reg(is_ltd_reg);
+    }
+
+    @Override
+    public void set_is_hrs(Boolean is_hrs) {
+        modelalldata.setIs_24_hours(is_hrs);
+    }
+
+    @Override
+    public void set_is_custom_jersey(Boolean is_custom_jersey) {
+        modelalldata.setIs_custom_tshirts(is_custom_jersey);
+    }
+
+    @Override
+    public void set_is_custom_certi(Boolean is_custom_certi) {
+        modelalldata.setIs_custom_certi(is_custom_certi);
+    }
+
+    @Override
+    public void set_ltd_hrs(String ltd_hrs) {
+        modelalldata.setHrs_before(ltd_hrs);
+    }
+
+    @Override
+    public void set_ltd_reg(String ltd_reg) {
+        modelalldata.setReg_no(ltd_reg);
+    }
+
 
 }

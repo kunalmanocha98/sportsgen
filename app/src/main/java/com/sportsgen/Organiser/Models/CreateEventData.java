@@ -31,23 +31,21 @@ public class CreateEventData implements Parcelable {
     Boolean is_paid;
     List<ModelEntryFees> list_entry_fees;
 
+    Boolean is_limited_reg;
+    Boolean is_24_hours;
+    Boolean is_custom_tshirts;
+    Boolean is_custom_certi;
+    String reg_no;
+    String hrs_before;
 
-
-    Bitmap img_banner;
-
-
-
-
-
-
-    public CreateEventData(Parcel in) {
+    protected CreateEventData(Parcel in) {
         Eventtype = in.readString();
         Eventname = in.readString();
         EventSport = in.readString();
         EventDescription = in.readString();
         Venuename = in.readString();
-        Venueplace=in.readString();
-        Venueaddress=in.readString();
+        Venueplace = in.readString();
+        Venueaddress = in.readString();
         Venue_lat = in.readString();
         Venue_lng = in.readString();
         byte tmpIs_multiple_days = in.readByte();
@@ -59,7 +57,49 @@ public class CreateEventData implements Parcelable {
         to_time = in.readString();
         byte tmpIs_paid = in.readByte();
         is_paid = tmpIs_paid == 0 ? null : tmpIs_paid == 1;
+        byte tmpIs_limited_reg = in.readByte();
+        is_limited_reg = tmpIs_limited_reg == 0 ? null : tmpIs_limited_reg == 1;
+        byte tmpIs_24_hours = in.readByte();
+        is_24_hours = tmpIs_24_hours == 0 ? null : tmpIs_24_hours == 1;
+        byte tmpIs_custom_tshirts = in.readByte();
+        is_custom_tshirts = tmpIs_custom_tshirts == 0 ? null : tmpIs_custom_tshirts == 1;
+        byte tmpIs_custom_certi = in.readByte();
+        is_custom_certi = tmpIs_custom_certi == 0 ? null : tmpIs_custom_certi == 1;
+        reg_no = in.readString();
+        hrs_before = in.readString();
         img_banner = in.readParcelable(Bitmap.class.getClassLoader());
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(Eventtype);
+        dest.writeString(Eventname);
+        dest.writeString(EventSport);
+        dest.writeString(EventDescription);
+        dest.writeString(Venuename);
+        dest.writeString(Venueplace);
+        dest.writeString(Venueaddress);
+        dest.writeString(Venue_lat);
+        dest.writeString(Venue_lng);
+        dest.writeByte((byte) (is_multiple_days == null ? 0 : is_multiple_days ? 1 : 2));
+        dest.writeString(single_date);
+        dest.writeString(from_date);
+        dest.writeString(to_date);
+        dest.writeString(from_time);
+        dest.writeString(to_time);
+        dest.writeByte((byte) (is_paid == null ? 0 : is_paid ? 1 : 2));
+        dest.writeByte((byte) (is_limited_reg == null ? 0 : is_limited_reg ? 1 : 2));
+        dest.writeByte((byte) (is_24_hours == null ? 0 : is_24_hours ? 1 : 2));
+        dest.writeByte((byte) (is_custom_tshirts == null ? 0 : is_custom_tshirts ? 1 : 2));
+        dest.writeByte((byte) (is_custom_certi == null ? 0 : is_custom_certi ? 1 : 2));
+        dest.writeString(reg_no);
+        dest.writeString(hrs_before);
+        dest.writeParcelable(img_banner, flags);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<CreateEventData> CREATOR = new Creator<CreateEventData>() {
@@ -73,6 +113,57 @@ public class CreateEventData implements Parcelable {
             return new CreateEventData[size];
         }
     };
+
+    public Boolean getIs_limited_reg() {
+        return is_limited_reg;
+    }
+
+    public void setIs_limited_reg(Boolean is_limited_reg) {
+        this.is_limited_reg = is_limited_reg;
+    }
+
+    public Boolean getIs_24_hours() {
+        return is_24_hours;
+    }
+
+    public void setIs_24_hours(Boolean is_24_hours) {
+        this.is_24_hours = is_24_hours;
+    }
+
+    public Boolean getIs_custom_tshirts() {
+        return is_custom_tshirts;
+    }
+
+    public void setIs_custom_tshirts(Boolean is_custom_tshirts) {
+        this.is_custom_tshirts = is_custom_tshirts;
+    }
+
+    public Boolean getIs_custom_certi() {
+        return is_custom_certi;
+    }
+
+    public void setIs_custom_certi(Boolean is_custom_certi) {
+        this.is_custom_certi = is_custom_certi;
+    }
+
+    public String getReg_no() {
+        return reg_no;
+    }
+
+    public void setReg_no(String reg_no) {
+        this.reg_no = reg_no;
+    }
+
+    public String getHrs_before() {
+        return hrs_before;
+    }
+
+    public void setHrs_before(String hrs_before) {
+        this.hrs_before = hrs_before;
+    }
+
+    Bitmap img_banner;
+
 
     public String getEventtype() {
         return Eventtype;
@@ -117,6 +208,7 @@ public class CreateEventData implements Parcelable {
     public String getVenue_lat() {
         return Venue_lat;
     }
+
     public String getVenueplace() {
         return Venueplace;
     }
@@ -217,57 +309,57 @@ public class CreateEventData implements Parcelable {
         this.img_banner = img_banner;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-    public CreateEventData(){}
 
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(Eventtype);
-        dest.writeString(Eventname);
-        dest.writeString(EventSport);
-        dest.writeString(EventDescription);
-        dest.writeString(Venuename);
-        dest.writeString(Venueplace);
-        dest.writeString(Venueaddress);
-        dest.writeString(Venue_lat);
-        dest.writeString(Venue_lng);
-        dest.writeByte((byte) (is_multiple_days == null ? 0 : is_multiple_days ? 1 : 2));
-        dest.writeString(single_date);
-        dest.writeString(from_date);
-        dest.writeString(to_date);
-        dest.writeString(from_time);
-        dest.writeString(to_time);
-        dest.writeByte((byte) (is_paid == null ? 0 : is_paid ? 1 : 2));
-        dest.writeParcelable(img_banner, flags);
+    public CreateEventData() {
     }
+
 
     public interface OnDataEntryListener {
         void setEventType(String Eventtype);
+
         void setEventName(String EventName);
+
         void setEventSport(String EventSport);
+
         void setEventDescription(String EventDescription);
 
         void setVenuename(String Venuename);
+
         void setVenueplace(String VenuePlace);
+
         void setVenueaddress(String Venueaddress);
+
         void setVenueLat(String VenueLat);
+
         void setVenueLng(String VenueLng);
 
         void set_is_multiple_days(Boolean is_multiple_days);
+
         void set_single_date(String single_date);
+
         void setFrom_date(String from_date);
+
         void set_to_date(String to_date);
+
         void set_from_time(String from_time);
+
         void set_to_time(String to_time);
 
         void set_is_paid(Boolean is_paid);
+
         void set_list_of_categories(List<ModelEntryFees> mlist);
 
+        void set_is_ltd_reg(Boolean is_ltd_reg);
 
+        void set_is_hrs(Boolean is_hrs);
+
+        void set_is_custom_jersey(Boolean is_custom_jersey);
+
+        void set_is_custom_certi(Boolean is_custom_certi);
+
+        void set_ltd_hrs(String ltd_hrs);
+
+        void set_ltd_reg(String ltd_reg);
 
     }
 }
