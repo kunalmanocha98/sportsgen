@@ -68,4 +68,6 @@ public class EventsFragment extends Fragment implements SpeedDialView.OnActionSe
             }
         }
     }
+
+
 }

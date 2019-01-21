@@ -81,21 +81,24 @@ public class EntryFeesFragment extends Fragment implements View.OnClickListener,
         radioGroup.setOnCheckedChangeListener(this);
         btn_submit=v.findViewById(R.id.btn_submit_categories);
         btn_submit.setOnClickListener(this);
+        btn_free.setChecked(true);
         checkmodeldata();
         return v;
     }
 
     private void checkmodeldata() {
         if (modelalldata!=null){
-            if (modelalldata.getIs_paid()){
-                btn_paid.setChecked(true);
-            }else{
-                btn_free.setChecked(true);
+
+            if (modelalldata.getIs_paid() !=null) {
+                if (modelalldata.getIs_paid()) {
+                    btn_paid.setChecked(true);
+                } else {
+                    btn_free.setChecked(true);
+                }
+
+                list.addAll(modelalldata.getList_entry_fees());
+                adapter.notifyDataSetChanged();
             }
-
-            list=modelalldata.getList_entry_fees();
-            adapter.notifyDataSetChanged();
-
         }
     }
 
@@ -138,28 +141,32 @@ public class EntryFeesFragment extends Fragment implements View.OnClickListener,
 
         Button btn_add=dialog.findViewById(R.id.btn_add);
         Button btn_cancel=dialog.findViewById(R.id.btn_cancel);
-        btn_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name=edt_category_name.getText().toString();
-                String price=edt_category_price.getText().toString();
-                ModelEntryFees modelEntryFees=new ModelEntryFees();
+        btn_add.setOnClickListener(v -> {
+            String name=edt_category_name.getText().toString();
+            String price=edt_category_price.getText().toString();
+            ModelEntryFees modelEntryFees=new ModelEntryFees();
 
-                if (name.equals("")){
-                    edt_category_name.setError("This field is required");
-                }else {
-                    if (edt_category_price.equals("")){
-                        if(btn_free.isChecked()){
-                            modelEntryFees.setCategory(name);
-                            modelEntryFees.setFees_entry(price);
-                            list.add(modelEntryFees);
-                            adapter.notifyDataSetChanged();
-                            dialog.dismiss();
-                        }else{
-                            edt_category_price.setError("This field is required");
-                        }
+            if (name.equals("")){
+                edt_category_name.setError("This field is required");
+            }else {
+                if (edt_category_price.equals("")){
+                    if(btn_free.isChecked()){
+                        modelEntryFees.setCategory(name);
+                        modelEntryFees.setFees_entry(price);
+                        list.add(modelEntryFees);
+                        adapter.notifyDataSetChanged();
+                        dialog.dismiss();
+                    }else{
+                        edt_category_price.setError("This field is required");
                     }
+                }else {
+                    modelEntryFees.setCategory(name);
+                    modelEntryFees.setFees_entry(price);
+                    list.add(modelEntryFees);
+                    adapter.notifyDataSetChanged();
+                    dialog.dismiss();
                 }
+            }
 
 
 //                if(name.equals("")){
@@ -174,7 +181,6 @@ public class EntryFeesFragment extends Fragment implements View.OnClickListener,
 //                    dialog.dismiss();
 //                }
 
-            }
         });
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override

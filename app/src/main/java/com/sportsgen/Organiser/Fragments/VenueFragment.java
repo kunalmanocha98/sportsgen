@@ -55,13 +55,13 @@ public class VenueFragment extends Fragment implements View.OnClickListener {
 
     private void checkmodeldata() {
         if (modelalldata !=null){
-            if (modelalldata.getVenuename().equals("")){
+            if (modelalldata.getVenuename() !=null){
                edt_venuename.setText(modelalldata.getVenuename());
             }
-            if(modelalldata.getVenueplace().equals("")){
+            if(modelalldata.getVenueplace() != null){
                 edt_venueplace.setText(modelalldata.getVenueplace());
             }
-            if (modelalldata.getVenueaddress().equals("")){
+            if (modelalldata.getVenueaddress() !=null){
                 edt_venueaddress.setText(modelalldata.getVenueaddress());
             }
         }

@@ -35,6 +35,7 @@ public class NamesportDesFragment extends Fragment implements RadioGroup.OnCheck
     CreateEventData.OnDataEntryListener onDataEntryListener;
     public static String LISTENER_KEY = "54";
     public static String OBJECT_KEY = "55";
+    private String des_text;
 
 
     public static Fragment newInstance(CreateEventData modelalldata) {
@@ -93,7 +94,12 @@ public class NamesportDesFragment extends Fragment implements RadioGroup.OnCheck
                 edt_sport.setText(modelalldata.getEventSport());
             }
             if (modelalldata.getEventDescription() != null) {
-                edt_description.setText(modelalldata.getEventDescription());
+//                write_description.setText(modelalldata.getEventDescription());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    write_description.setText(Html.fromHtml(modelalldata.getEventDescription(),Html.FROM_HTML_MODE_LEGACY));
+                }else {
+                    write_description.setText(Html.fromHtml(des_text));
+                }
             }
         }
     }
@@ -135,7 +141,7 @@ public class NamesportDesFragment extends Fragment implements RadioGroup.OnCheck
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode==Constants.IntegerConstants.DESCRIPTION_RESULT){
             if (resultCode==getActivity().RESULT_OK){
-                String des_text=data.getStringExtra(Constants.StringConstants.HTML_TEXT);
+                des_text=data.getStringExtra(Constants.StringConstants.HTML_TEXT);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     write_description.setText(Html.fromHtml(des_text,Html.FROM_HTML_MODE_LEGACY));
                 }else {
@@ -173,7 +179,7 @@ public class NamesportDesFragment extends Fragment implements RadioGroup.OnCheck
         }
         onDataEntryListener.setEventName(edt_name.getText().toString());
         onDataEntryListener.setEventSport(edt_sport.getText().toString());
-        onDataEntryListener.setEventDescription(write_description.getText().toString());
+        onDataEntryListener.setEventDescription(des_text);
         Constants.StringConstants.is_NameData_Submited = true;
         Utils.toast(getActivity(), "Submitted Successfully");
     }

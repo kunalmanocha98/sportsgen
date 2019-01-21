@@ -38,6 +38,8 @@ public class CreateEventData implements Parcelable {
     String reg_no;
     String hrs_before;
 
+    Bitmap img_banner;
+
     protected CreateEventData(Parcel in) {
         Eventtype = in.readString();
         Eventname = in.readString();
@@ -162,7 +164,7 @@ public class CreateEventData implements Parcelable {
         this.hrs_before = hrs_before;
     }
 
-    Bitmap img_banner;
+
 
 
     public String getEventtype() {
@@ -360,6 +362,7 @@ public class CreateEventData implements Parcelable {
         void set_ltd_hrs(String ltd_hrs);
 
         void set_ltd_reg(String ltd_reg);
+        void set_img_banner(Bitmap img_banner);
 
     }
 }

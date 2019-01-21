@@ -126,16 +126,18 @@ public class DateandTimeFragment extends Fragment implements View.OnClickListene
 
     private void checkmodeldata() {
         if (modelalldata !=null){
-            if (modelalldata.getIs_multiple_days()){
-                mSwitch.setChecked(false);
-                edt_start_date.setText(modelalldata.getFrom_date());
-                edt_end_date.setText(modelalldata.getTo_date());
-            }else{
-                mSwitch.setChecked(true);
-                edt_single_date.setText(modelalldata.getSingle_date());
+            if (modelalldata.getIs_multiple_days() !=null) {
+                if (modelalldata.getIs_multiple_days()) {
+                    mSwitch.setChecked(false);
+                    edt_start_date.setText(modelalldata.getFrom_date());
+                    edt_end_date.setText(modelalldata.getTo_date());
+                } else {
+                    mSwitch.setChecked(true);
+                    edt_single_date.setText(modelalldata.getSingle_date());
+                }
+                edt_start_time.setText(modelalldata.getFrom_time());
+                edt_end_time.setText(modelalldata.getTo_time());
             }
-            edt_start_time.setText(modelalldata.getFrom_time());
-            edt_end_time.setText(modelalldata.getTo_time());
         }
     }
 
@@ -198,7 +200,7 @@ public class DateandTimeFragment extends Fragment implements View.OnClickListene
                 Utils.toast(getActivity(),"Some data missing");
             }
         }else {
-            if (!edt_single_date.getText().toString().equals("") && !edt_end_date.getText().toString().equals("")){
+            if (!edt_start_date.getText().toString().equals("") && !edt_end_date.getText().toString().equals("")){
                 checktime();
             }else {
                 Utils.toast(getActivity(),"Some data missing");
@@ -207,7 +209,7 @@ public class DateandTimeFragment extends Fragment implements View.OnClickListene
     }
 
     private void checktime() {
-        if (!edt_single_date.getText().toString().equals("") && !edt_end_date.getText().toString().equals("")){
+        if (!edt_start_time.getText().toString().equals("") && !edt_end_time.getText().toString().equals("")){
             proceedsubmit();
         }else {
             Utils.toast(getActivity(),"Some data missing");
@@ -225,7 +227,7 @@ public class DateandTimeFragment extends Fragment implements View.OnClickListene
         }
         onDataEntryListener.set_from_time(edt_start_time.getText().toString());
         onDataEntryListener.set_to_time(edt_end_time.getText().toString());
-        Constants.StringConstants.is_NameData_Submited = true;
+        Constants.StringConstants.is_DateTimeData_Submited = true;
         Utils.toast(getActivity(), "Submitted Successfully");
     }
 

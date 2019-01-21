@@ -1,9 +1,12 @@
 package com.sportsgen.Organiser.Activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -43,8 +46,18 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
         btn_pre.setOnClickListener(this);
         modelalldata = new CreateEventData();
         loadFragment(NamesportDesFragment.newInstance(modelalldata));
+        refreshalldata();
         setupstepview();
 
+    }
+
+    private void refreshalldata() {
+        Constants.StringConstants.is_DateTimeData_Submited=false;
+        Constants.StringConstants.is_CategoriesData_submitted=false;
+        Constants.StringConstants.is_Extra_Details_Data_submitted=false;
+        Constants.StringConstants.is_VenueData_submitted=false;
+        Constants.StringConstants.is_NameData_Submited=false;
+        Constants.StringConstants.is_Image_banner_Submitted=false;
     }
 
     private void setupstepview() {
@@ -65,10 +78,13 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
         if (Constants.StringConstants.CREATE_EVENT_FRAGMENT == NamesportDesFragment.class.getName()) {
             btn_pre.setVisibility(View.INVISIBLE);
             btn_next.setVisibility(View.VISIBLE);
+            btn_next.setText("Next");
         } else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT == ImageBanerFragment.class.getName()) {
-            btn_next.setVisibility(View.INVISIBLE);
+//            btn_next.setVisibility(View.INVISIBLE);
+            btn_next.setText("Proceed");
             btn_pre.setVisibility(View.VISIBLE);
         } else {
+            btn_next.setText("Next");
             btn_next.setVisibility(View.VISIBLE);
             btn_pre.setVisibility(View.VISIBLE);
         }
@@ -122,6 +138,13 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
                     } else {
                         Utils.toast(CreateEventActivity.this, "Please Submit the data first");
                     }
+                }else if (Constants.StringConstants.CREATE_EVENT_FRAGMENT.equals(ImageBanerFragment.class.getName())) {
+                    if (Constants.StringConstants.is_Image_banner_Submitted) {
+                        stepView.done(true);
+                        showalertDialog();
+                    } else {
+                        Utils.toast(CreateEventActivity.this, "Please Submit the data first");
+                    }
                 }
                 break;
             }
@@ -140,6 +163,28 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
                 break;
             }
         }
+    }
+
+    private void showalertDialog() {
+        AlertDialog.Builder dialog= new AlertDialog.Builder(CreateEventActivity.this);
+        dialog.setTitle("Submit data");
+        dialog.setMessage("Please review your data before Submitting");
+        dialog.setCancelable(false);
+        dialog.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+//                proceedwith the logic
+                dialog.dismiss();
+            }
+        });
+        dialog.setNegativeButton("Review", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+
     }
 
     @Override
@@ -209,7 +254,7 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void set_from_time(String from_time) {
-        modelalldata.setFrom_date(from_time);
+        modelalldata.setFrom_time(from_time);
     }
 
     @Override
@@ -255,6 +300,11 @@ public class CreateEventActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void set_ltd_reg(String ltd_reg) {
         modelalldata.setReg_no(ltd_reg);
+    }
+
+    @Override
+    public void set_img_banner(Bitmap img_banner) {
+        modelalldata.setImg_banner(img_banner);
     }
 
 

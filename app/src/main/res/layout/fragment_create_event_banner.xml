@@ -12,7 +12,6 @@
             <ImageView
                 android:id="@+id/img_banner"
                 android:layout_margin="8dp"
-                android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"/>
             <LinearLayout
